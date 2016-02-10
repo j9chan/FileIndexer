@@ -32,4 +32,10 @@ public class SpecialCharacterTokenizer extends Tokenizer {
         }
         return tokenizedStringCounter;
     }
+
+    public HashMap<String, Integer> tokenizeAndCount(String text) {
+        String[] text1 = new String[1];
+        text1[0] = text;
+        return tokenizeAndCount(text1);
+    }
 }

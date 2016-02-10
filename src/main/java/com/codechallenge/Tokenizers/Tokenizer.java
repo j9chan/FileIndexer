@@ -8,4 +8,5 @@ import java.util.HashMap;
 public abstract class Tokenizer {
     public abstract HashMap<String, Integer> tokenizeAndCount(String[] text);
 
+    public abstract HashMap<String, Integer> tokenizeAndCount(String text);
 }
