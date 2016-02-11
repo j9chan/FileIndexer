@@ -19,7 +19,8 @@ Code challenge for RackSpace.
 
 ## Code Example
 
-### Tokenize and track words (src/main/java/com/codechallenge/Tokenizers/SpecialCharacterTokenizer.java)
+### Tokenize and track words
+- [src/main/java/com/codechallenge/Tokenizers/SpecialCharacterTokenizer.java](https://github.com/j9chan/FileIndexer/blob/master/src/main/java/com/codechallenge/Tokenizers/SpecialCharacterTokenizer.java)
 ```
 HashMap<String, Integer> tokenizedStringCounter = new HashMap<String, Integer>();
 String[] tokens = str.split("[^a-zA-Z0-9]");
@@ -30,8 +31,10 @@ for (String token : tokens) {
         tokenizedStringCounter.put(token.toLowerCase(), updatedTokenCount);
     }
 }
-
-### Return top 10 words (src/main/java/com/codechallenge/FileIndexer.java)
+```
+### Return top 10 words
+- [src/main/java/com/codechallenge/FileIndexer.java](https://github.com/j9chan/FileIndexer/blob/master/src/main/java/com/codechallenge/FileIndexer.java)
+```
 Collections.sort(tokenizedStringCounterList, tokenComparator);
 for(int i = 0; i < 10 && i < tokenizedStringCounterList.size(); i++) {
     System.out.println(String.format("%d %s",
