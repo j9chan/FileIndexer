@@ -54,4 +54,6 @@ mvn test
 - Tests correspond to the tokenizer and indexer classes used in <path>/src/main/java/com/codechallenge
 
 ### Run functional tests
-<path>/tests/
+./<path>/tests/runSuite ./<path>/tests/testSuite.txt ./index.sh
+
+- Solutions found partially by http://www.textfixer.com/tools/online-word-counter.php#newText2 and inspection
