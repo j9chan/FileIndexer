@@ -8,16 +8,16 @@ import java.util.*;
  * Contains the main class to run indexers
  */
 public class FileIndexer {
-    private static final Comparator TOKEN_ORDER = new TokenComparator();
 
     public static List<Map.Entry<String, Integer>> index(String[] text) {
         SpecialCharacterTokenizer tokenizer = new SpecialCharacterTokenizer();
+        final Comparator tokenComparator = new TokenComparator();
         HashMap<String, Integer> tokenizedStringCounter = tokenizer.tokenizeAndCount(text);
 
         // Unlist and sort the pairs
         List<Map.Entry<String, Integer>> tokenizedStringCounterList =
                 new ArrayList<Map.Entry<String, Integer>>(tokenizedStringCounter.entrySet());
-        Collections.sort(tokenizedStringCounterList, TOKEN_ORDER);
+        Collections.sort(tokenizedStringCounterList, tokenComparator);
 
         return tokenizedStringCounterList;
     }

@@ -27,6 +27,8 @@ if [ ${?} -ne 0 ]; then #test does not pass
      cat ${f}.out
      echo "Actual:"
      cat ${temp}
+ else
+    echo "Test Passed: ${f}"
  fi
    rm ${temp}
 done < ${1}

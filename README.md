@@ -17,7 +17,9 @@ Code challenge for RackSpace.
  input, and we suggest you try out some free plain text books from
  http://www.gutenberg.org/
 
-## Code Example - Basic Logic for tokenization and count
+## Code Example
+
+### Tokenize and track words (src/main/java/com/codechallenge/Tokenizers/SpecialCharacterTokenizer.java)
 ```
 HashMap<String, Integer> tokenizedStringCounter = new HashMap<String, Integer>();
 String[] tokens = str.split("[^a-zA-Z0-9]");
@@ -28,11 +30,23 @@ for (String token : tokens) {
         tokenizedStringCounter.put(token.toLowerCase(), updatedTokenCount);
     }
 }
+
+### Return top 10 words (src/main/java/com/codechallenge/FileIndexer.java)
+Collections.sort(tokenizedStringCounterList, tokenComparator);
+for(int i = 0; i < 10 && i < tokenizedStringCounterList.size(); i++) {
+    System.out.println(String.format("%d %s",
+            tokenizedStringCounterList.get(i).getValue(), tokenizedStringCounterList.get(i).getKey()));
+}
+
 ```
 ## Installation
 
-Requires [Java 7+](https://www.java.com/en/download/)
-- The .jar file should be located in <path>/target
+- Requires [Java 7+](https://www.java.com/en/download/)
+
+```
+git clone https://github.com/j9chan/FileIndexer.git
+cd FileIndexer
+```
 
 ### To run
 
@@ -45,7 +59,7 @@ Note: If the blob is too long you might get error: -bash: ./index.sh: Argument l
 ## Tests
 
 ### Run Unit Tests
-Install [Maven](https://maven.apache.org/)
+- Install [Maven](https://maven.apache.org/)
 
 ```
 mvn test
@@ -54,6 +68,7 @@ mvn test
 - Tests correspond to the tokenizer and indexer classes used in <path>/src/main/java/com/codechallenge
 
 ### Run functional tests
-./<path>/tests/runSuite ./<path>/tests/testSuite.txt ./index.sh
+./tests/runSuite ./tests/testSuite.txt ./index.sh
 
+- If it finishes silently, the tests have passed
 - Solutions found partially by http://www.textfixer.com/tools/online-word-counter.php#newText2 and inspection
