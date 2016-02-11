@@ -13,6 +13,4 @@ import org.junit.runners.Suite;
         SpecialCharacterTokenizerTest.class
 })
 public class AllTests {
-
-
 }

@@ -1,7 +1,7 @@
 package com.codechallenge;
 
 /**
- * Created by jenniferchan on 2016-02-09.
+ * Strings to test
  */
 public class TestStrings {
     // Whitespace
@@ -17,17 +17,27 @@ public class TestStrings {
 
     // Lower Case
     public static String lc1 = "a";
-    public static String lc2 = "z";
-    public static String lc3 = "m";
-    public static String lc4 = "adfiwer";
-    public static String lc5 = "az";
+    public static String lc2 = "az";
 
     // Upper Case
     public static String uc1 = "A";
-    public static String uc2 = "Z";
-    public static String uc3 = "M";
-    public static String uc4 = "ASKFJIE";
-    public static String uc5 = "AZ";
+    public static String uc2 = "AZ";
 
-    
+    // Numbers
+    public static String n1 = "0";
+    public static String n2 = "29412398";
+
+    // Combination of valid strings
+    public static String cv1 = lc1 + uc1 + n1;
+    public static String cv2 = lc2 + n2 + lc1 + uc2;
+
+    // Combination of valid with Special characters
+    // Small tests
+    public static String s1 = "a a$ a\n a     a#a*";
+    public static String s2 = "bye bye aye aye";
+    public static String s3 = "a b c d e f g h i j k";
+    public static String s4 = "k i a d e f g b c h j";
+
+    // Long tests
+    public static String l1 = "Project Gutenberg offers over 50,000 free ebooks: choose among free epub books, free kindle books, download them or read them online.\n We carry high quality ebooks: All our ebooks were previously published by bona fide publishers. We digitized and diligently proofread them with the help of thousands of volunteers.";
 }
