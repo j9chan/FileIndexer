@@ -2,3 +2,4 @@ tests/t1
 tests/f1
 tests/f2
 tests/f3
+tests/f4
