@@ -1,5 +1,8 @@
 tests/t1
+tests/t2
+tests/t3
 tests/f1
 tests/f2
 tests/f3
 tests/f4
+tests/f5
