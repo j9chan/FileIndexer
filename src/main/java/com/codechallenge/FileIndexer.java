@@ -1,6 +1,7 @@
 package com.codechallenge;
 
 import com.codechallenge.Tokenizers.SpecialCharacterTokenizer;
+import com.codechallenge.Tokenizers.Tokenizer;
 
 import java.util.*;
 
@@ -9,8 +10,17 @@ import java.util.*;
  */
 public class FileIndexer {
 
-    public static List<Map.Entry<String, Integer>> index(String[] text) {
-        SpecialCharacterTokenizer tokenizer = new SpecialCharacterTokenizer();
+    /**
+     * Reads in an array of strings
+     * Tokenizes the strings
+     * Reads in contents of files if file names occur in the string
+     * Tokenizes all strings according to some regex
+     * Returns sorted list of all uniquely occuring strings
+     * @param text Array of strings to tokenize
+     * @param tokenizer Tokenizes the strings
+     * @return Sorted list of pairs of uniquely occurring strings and their count
+     */
+    public static List<Map.Entry<String, Integer>> index(String[] text, Tokenizer tokenizer) {
         final Comparator tokenComparator = new TokenComparator();
         HashMap<String, Integer> tokenizedStringCounter = tokenizer.tokenizeAndCount(text);
 
@@ -23,7 +33,7 @@ public class FileIndexer {
     }
 
     public static void main(String[] args) {
-        List<Map.Entry<String, Integer>> tokenizedStringCounterList = index(args);
+        List<Map.Entry<String, Integer>> tokenizedStringCounterList = index(args, new SpecialCharacterTokenizer());
 
         for(int i = 0; i < 10 && i < tokenizedStringCounterList.size(); i++) {
             System.out.println(String.format("%d %s",

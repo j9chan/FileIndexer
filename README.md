@@ -51,13 +51,20 @@ git clone https://github.com/j9chan/FileIndexer.git
 cd FileIndexer
 ```
 
-### To run
+## To run
+
+### Read in text blob
 
 ```
 ./index.sh "blob of text"
 
 ```
 Note: If the blob is too long you might get error: -bash: ./index.sh: Argument list too long
+
+### Read in file input
+```
+./index.sh "file.txt"
+```
 
 ## Tests
 
@@ -73,5 +80,4 @@ mvn test
 ### Run functional tests
 ./tests/runSuite ./tests/testSuite.txt ./index.sh
 
-- If it finishes silently, the tests have passed
 - Solutions found partially by http://www.textfixer.com/tools/online-word-counter.php#newText2 and inspection

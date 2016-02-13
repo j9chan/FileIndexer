@@ -1,5 +1,6 @@
 package com.codechallenge;
 
+import com.codechallenge.Tokenizers.SpecialCharacterTokenizer;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -13,14 +14,14 @@ public class FileIndexerTest {
     @Test
     public void testIndex1(){
         String[] str = new String[0];
-        List<Map.Entry<String, Integer>> test1 = FileIndexer.index(str);
+        List<Map.Entry<String, Integer>> test1 = FileIndexer.index(str, new SpecialCharacterTokenizer());
         assert(test1.isEmpty());
     }
 
     @Test
     public void testIndex2(){
         String[] ts1 = {TestStrings.s4};
-        List<Map.Entry<String, Integer>> t1 = FileIndexer.index(ts1);
+        List<Map.Entry<String, Integer>> t1 = FileIndexer.index(ts1, new SpecialCharacterTokenizer());
         assert (t1.size() == 11);
         Assert.assertEquals(t1.get(0).getKey(), "a");
         assert(t1.get(0).getValue() == 1);
@@ -49,7 +50,7 @@ public class FileIndexerTest {
     @Test
     public void testIndex4() {
         String[] ts1 = {TestStrings.l1};
-        List<Map.Entry<String, Integer>> t1 = FileIndexer.index(ts1);
+        List<Map.Entry<String, Integer>> t1 = FileIndexer.index(ts1, new SpecialCharacterTokenizer());
         assert(t1.size() == 41);
         Assert.assertEquals(t1.get(0).getKey(), "ebooks");
         assert(t1.get(0).getValue() == 3);
