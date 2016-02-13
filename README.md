@@ -17,6 +17,8 @@ Code challenge for RackSpace.
  input, and we suggest you try out some free plain text books from
  http://www.gutenberg.org/
 
+Note: See file-input branch for blobs containing filenames
+
 ## Code Example
 
 ### Tokenize and track words
@@ -51,7 +53,7 @@ git clone https://github.com/j9chan/FileIndexer.git
 cd FileIndexer
 ```
 
-### To run
+## To run
 
 ```
 ./index.sh "blob of text"

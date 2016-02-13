@@ -1,2 +1,4 @@
 tests/t1
 tests/book1
+tests/t2
+tests/t3
