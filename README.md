@@ -17,7 +17,7 @@ Code challenge for RackSpace.
  input, and we suggest you try out some free plain text books from
  http://www.gutenberg.org/
 
-Note: See file-input branch for blobs containing filenames
+Note: See file-input branch for blobs containing filenames functionality (need to merge eventually)
 
 ## Code Example
 
@@ -36,6 +36,7 @@ for (String token : tokens) {
 ```
 ### Return top 10 words
 - [src/main/java/com/codechallenge/FileIndexer.java](https://github.com/j9chan/FileIndexer/blob/master/src/main/java/com/codechallenge/FileIndexer.java)
+
 ```
 Collections.sort(tokenizedStringCounterList, tokenComparator);
 for(int i = 0; i < 10 && i < tokenizedStringCounterList.size(); i++) {
@@ -77,3 +78,56 @@ mvn test
 
 - If it finishes silently, the tests have passed
 - Solutions found partially by http://www.textfixer.com/tools/online-word-counter.php#newText2 and inspection
+
+## Some Extra Bits
+
+### General Approach and Why It Was Chosen:
+- Used a hash map to store entries
+- Used spilt() to tokenize - Can be optimized
+- Sort entries according to most frequently seen - Can be optimized
+- Print top 10 entries
+- Assuming words are repetitive then this may work better than NlogN, N is the number of words to be processed
+
+### Alternate Approaches and Why They Weren’t Chosen:
+- Use a Priority Queue instead of sorting
+    * Java builtin PriorityQueue uses O(NlogN) for enqueuing and dequeuing so would need to create a custom class
+    * Create a max heap with O(N) heapify function where k=number of times seen and v=word
+    * Worst Case is O(N) time
+    * This wasn’t implemented due to time constraints. No built in Java structure for heaps, so heapify, bubble-down, and delete max, and testing would need to be implemented from scratch.
+- Use Bash to append files together then process (fast way)
+    * Not sure how extensible that would be + debugging
+- Use built-in StringTokenizer instead of split
+
+### Resource Needs and Performance:
+- Resources: Java
+- Performance: O(NlogN)
+- Space Requirements: O(N) memory
+
+### Assumptions Made About Dataset:
+- Number of unique entries are not going to overflow memory
+- Files are not going to overflow memory
+- Text are words, English is repetitive so sorting may be faster if there aren't N unique entries
+
+### Improvements:
+* Handle Memory Overflows
+    * Files are too large to fit into memory
+    * Read line by line by buffering BufferedReader and a Scanner
+    * Lots of unique entries so the HashMap is too large
+    * Consider using temp files to store a hash table. Writing to disk is slow though.
+    * Consideration: If you have a lot of nodes where you can split memory resources then might not be as much of a problem
+
+* Testing
+    * The way running tests could be improved so that unit tests and functional tests can be run together
+    * runSuite script probably shouldn’t include the input since it can be large
+    * Find a way to incorporate unit test strings into the functional tests since strings could be reused
+    * Read from file for jUnit is not recommended
+
+* General Improvements
+    * Text specialization: Use dictionary to check if it is a word
+    * Language variations: colour vs. color
+    * More Java built-ins: Use StringTokenizer instead
+    * Use wrappers to hide implementation
+    * Logging?
+    * Use command line arguments to control the number of words to return
+
+* Test in non-Unix environments
